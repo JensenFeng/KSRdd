@@ -17,6 +17,4 @@ libraryDependencies ++= Seq(
   "org.scala-lang" % "scala-compiler" % "2.10.0"
 )
 
-//mainClass in Compile := Some("me.jie.test.ksMain")
-
 assemblyOption  in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
