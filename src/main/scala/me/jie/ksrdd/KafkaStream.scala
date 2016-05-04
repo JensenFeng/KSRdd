@@ -32,11 +32,11 @@ class kafkaStream[K, V] private (config: kafkaConfig, keyDecoder: Decoder[K], va
 
   import kafkaStream._
 
-  private val fetchMessageMaxBytes = 1000
+  private val fetchMessageMaxBytes = config.fetchMessageMaxBytes
   //config
-  private val retries = 3
+  private val retries = config.retries
   //config
-  private val refreshLeaderBackoffMs = 1000
+  private val refreshLeaderBackoffMs = config.refreshLeaderBackoffMs
 
   private val kafkaHelper = new kafkaHelper(config)
   import kafkaHelper.{buildConsumer, findLeader}

@@ -8,12 +8,12 @@ import kafka.consumer.SimpleConsumer
   * Created by jie on 4/28/16.
   */
 class kafkaHelper(config: kafkaConfig) {
-    private val brokers = config.metaDataBrokerList.split(",").map(kafkaBroker(_))
+    private val brokers = config.metadataBrokerList.split(",").map(kafkaBroker(_))
     private val socketTimeoutMs = config.socketTimeoutMs
     private val socketReceiveBufferBytes = config.socketReceiveBufferBytes
     private val consumerId = config.consumerId
-    private val retries = 3 //config.retries
-    private val refreshLeaderBackoffMs = 10 * 1000 //config
+    private val retries = config.retries
+    private val refreshLeaderBackoffMs = config.refreshLeaderBackoffMs
 
     def findLeader(topicAndPartition: TopicAndPartition): kafkaBroker =
       Stream(1 to retries: _*).map { _ =>

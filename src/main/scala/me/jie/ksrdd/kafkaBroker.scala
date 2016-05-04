@@ -9,7 +9,7 @@ case class kafkaBroker(host: String, port: Int)
 object kafkaBroker {
   def apply(addr: String): kafkaBroker = addr.split(":") match {
     case Array(host, port) => kafkaBroker(host, port.toInt)
-    case Array(host) => kafkaBroker(host, 9292)
+    case Array(host) => kafkaBroker(host, 9092)
     case _ => throw new IllegalArgumentException(addr)
   }
 }
